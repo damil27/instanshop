@@ -1,13 +1,13 @@
-'use client';
-import GoogleIcon from '@/components/jsx-icons/google-icon';
-import InstagramIcon from '@/components/jsx-icons/Instagram-icon';
-import TiktokIcon from '@/components/jsx-icons/tiktok-icon';
-import Button from '@/components/ui/button';
-import Input from '@/components/ui/input';
-import { usePageStore } from '@/store/onboarding-control';
-import {  UseFormReturn } from 'react-hook-form';
-import { z } from 'zod';
-import { FormSchema } from './formSchema';
+"use client";
+import GoogleIcon from "@/components/jsx-icons/google-icon";
+import InstagramIcon from "@/components/jsx-icons/Instagram-icon";
+import TiktokIcon from "@/components/jsx-icons/tiktok-icon";
+import Button from "@/components/ui/button";
+import Input from "@/components/ui/input";
+import { usePageStore } from "@/store/onboarding-control";
+import { UseFormReturn } from "react-hook-form";
+import { z } from "zod";
+import { FormSchema } from "./formSchema";
 
 type FormData = z.infer<typeof FormSchema>;
 
@@ -24,7 +24,7 @@ export const SectionTwo = ({ form }: SectionTwoProps) => {
   } = form;
 
   const handleClick = async () => {
-    const isValid = await trigger(['fullName', 'userName', 'phone', 'email']); 
+    const isValid = await trigger(["fullName", "userName", "phone", "email"]);
     if (isValid) {
       setPage(page + 1);
     }
@@ -59,7 +59,7 @@ export const SectionTwo = ({ form }: SectionTwoProps) => {
           <p className="text-sm leading-[1.139375rem]">Or enter manually</p>
           <div className="flex flex-col gap-3">
             <div>
-              <Input placeholder="Full name" {...register('fullName')} />
+              <Input placeholder="Full name" {...register("fullName")} />
               {errors.fullName && (
                 <p className="text-sm text-red-500">
                   {errors.fullName.message}
@@ -67,7 +67,7 @@ export const SectionTwo = ({ form }: SectionTwoProps) => {
               )}
             </div>
             <div>
-              <Input placeholder="Username" {...register('userName')} />
+              <Input placeholder="Username" {...register("userName")} />
               {errors.userName && (
                 <p className="text-sm text-red-500">
                   {errors.userName.message}
@@ -75,13 +75,17 @@ export const SectionTwo = ({ form }: SectionTwoProps) => {
               )}
             </div>
             <div>
-              <Input placeholder="Phone number" {...register('phone')} />
+              <Input
+                placeholder="Phone number"
+                type="number"
+                {...register("phone", { valueAsNumber: true })}
+              />
               {errors.phone && (
                 <p className="text-sm text-red-500">{errors.phone.message}</p>
               )}
             </div>
             <div>
-              <Input placeholder="Email" {...register('email')} />
+              <Input placeholder="Email" {...register("email")} />
               {errors.email && (
                 <p className="text-sm text-red-500">{errors.email.message}</p>
               )}
