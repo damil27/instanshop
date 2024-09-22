@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
@@ -16,21 +14,28 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Reason for Server-Side Rendering (SSR):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+In our project, **SSR (Server-Side Rendering)** is useful when the page's content changes frequently or requires dynamic information, such as personalized data for logged-in users or real-time data from an external source.
 
-## Learn More
+For example, the **Product Details Page** would be a suitable use case for SSR. When the inventory levels or price of a product are updated regularly, using SSR ensures that each time a user visits the page, they receive the most current and accurate information. This is particularly important for pages where up-to-date content is essential to user experience and SEO.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Reason for Static Site Generation (SSG):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Conversely, both the **Home Page** and **Create Product** pages can benefit from **SSG (Static Site Generation)** because they involve interactions and some onClick actions, but their core content doesn't change frequently.
 
-## Deploy on Vercel
+This allows these pages to be pre-built during the build process and served quickly. **SSG** significantly boosts performance and SEO due to the static nature of these pages, making it ideal for content like the Home Page or Product Listing Page, which doesn't require constant updates.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Packages Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **TailwindCSS**: TailwindCSS is used for styling the application with utility-first CSS classes, allowing us to create a responsive and highly customizable design system efficiently.
+
+- **React Hook Form**: React Hook Form is responsible for managing and validating form data with minimal re-renders, leading to better performance and ease of handling forms.
+
+- **Sharp**: Sharp is used for image processing tasks such as resizing and optimizing uploaded images to improve the performance and user experience in handling media content.
+
+- **Zod**: Zod is utilized for schema validation, ensuring that the submitted form data matches the expected structure and preventing incorrect data from being processed.
+
+- **Zustand**: Zustand provides a lightweight and flexible state management solution to handle global state across various components, ensuring consistent and reliable data flow throughout the application.
