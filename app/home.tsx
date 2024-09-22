@@ -5,9 +5,22 @@ import Button from "@/components/ui/button";
 import Image from "next/image";
 import sale from "@/public/images/sale-illustration.png";
 import { useRouter } from "next/navigation";
+import { usePageStore } from "@/store/onboarding-control";
+import { useEffect } from "react";
+import { getCookie } from "@/lib/getCookies";
 
 const HomePage = () => {
   const router = useRouter();
+  const { setPage } = usePageStore();
+
+  useEffect(() => {
+    const isAuthenticated = getCookie("isAuthenticated");
+    if (isAuthenticated === "true") {
+      document.cookie = `isAuthenticated=false; path=/;`;
+    }
+    setPage(0);
+  }, []);
+
   return (
     <section className="flex min-h-[calc(100vh-104px)]   flex-col justify-between px-8">
       <div className="">
